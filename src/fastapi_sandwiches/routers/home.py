@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from pathlib import Path
 
 from fastapi import APIRouter, Request
@@ -12,4 +13,11 @@ templates = Jinja2Templates(directory=PROJECT_ROOT.joinpath("templates"))
 
 @router.get("/")
 def home(request: Request):
-    return templates.TemplateResponse("home.html", context={"request": request})
+    data = [Sandwiches(name="Marmite and Cheese", count=10)]
+    return templates.TemplateResponse("home.html", context={"request": request, "sandwiches": data})
+
+
+@dataclass
+class Sandwiches:
+    name: str
+    count: int

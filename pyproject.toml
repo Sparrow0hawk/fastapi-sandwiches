@@ -33,7 +33,8 @@ path = "src/fastapi_sandwiches/__about__.py"
 [tool.hatch.envs.default]
 dependencies = [
   "coverage[toml]>=6.5",
-  "pytest"
+  "pytest",
+  "beautifulsoup4"
 ]
 [tool.hatch.envs.default.scripts]
 app = "uvicorn --port 8000 fastapi_sandwiches.main:app --reload"
